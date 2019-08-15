@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.qcr.mapper.QcrMapper">
+	<select id="getAccessToken" resultType="String">
+		select access_token from  tools_access_token where date_format(create_time,'%Y%m%d')=date_format(now(),'%Y%m%d') limit 1
+	</select>
+	<insert id="insertAccessToken" parameterType="String">
+		insert into tools_access_token (access_token,create_time) values (#{str},now())
+	</insert>
+</mapper>
